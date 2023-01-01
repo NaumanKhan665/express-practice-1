@@ -11,8 +11,8 @@ const persons=[{
     
 },{
     id:3,
-    name:'arslan',
-    subjects:['eng','urdu','Math']
+    name:'Adeel',
+    subjects:['Javascript','C++','OOP']
 
 
 }
