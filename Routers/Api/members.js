@@ -21,13 +21,52 @@ Router.get('/:id',(req,res)=>{
 }
 )
 
-//trying to access an invalid page
-Router.get('*',(req,res)=>{
+//post data
+Router.post('/',(req,res)=>{
+  
+    const newMembers={
+          
+        id:4,
+        name:"Asim",
+        email:'nauman@gmail.com',
+      subjects:['Javascript','C++','OOP']
 
-  res.send('your trying to access an inavlid page')
+      } 
+
+      persons.push(newMembers)
+      res.json(persons)
+
+});
+//put request
+Router.put('/:id',(req,res)=>{
+    let found=persons.some(person=>person.id===parseInt( req.params.id))
+    if(found){  
+        const updateMember=req.body;
+        persons.forEach(person=>{
+       if(person.id===parseInt( req.params.id)){
+                         person.name=updateMember.name;
+                person.email=updateMember.email;
+               
+                res.send({msg:'member update',person})
+
+            }
+  
+        })
 
 
+        res.json(persons.filter(person=>person.id===parseInt( req.params.id))) 
+    }else{
+  
+        res.send('not a part of this members')
+    }
+       
 })
 
 
+Router.delete('/:id',(req,res)=>{
+
+   
+    res.json(persons.filter(person=>person.id!==parseInt( req.params.id))) 
+    
+})
 module.exports=Router;

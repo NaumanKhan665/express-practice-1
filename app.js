@@ -11,6 +11,10 @@ const PORT=5001;
 
 
 
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+
+
 app.use('/persons',require('./Routers/Api/members'))
 //setting static route 
 app.use(express.static(path.join(__dirname,'public'),{extensions:'html'}))
